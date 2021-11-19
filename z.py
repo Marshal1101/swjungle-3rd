@@ -1,3 +1,5 @@
+## 이진 검색 트리 클래스 (참조)
+
 from __future__ import annotations
 from typing import Any, Type
 import sys

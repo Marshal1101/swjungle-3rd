@@ -1,4 +1,4 @@
-## 03 1197 최소 스패닝 트리
+## 03 1197 최소 스패닝 트리 (구현: 01)
 # 프림 알고리즘
 
 
@@ -15,7 +15,6 @@ for _ in range(E):
     arr[v1-1].append([v2-1, d])
     arr[v2-1].append([v1-1, d])
 
-### Prim
 # 간선리스트, 가중치, 방문 회수
 # 정점 방문 여부 리스트(인덱스i:정점i 방문되면 True)
 # 힙 푸시: dist, start vertex
@@ -36,5 +35,6 @@ while cnt < V:
         for way in arr[v2]:
             if not vi[way[0]]:
                 heapq.heappush(edge, [way[1], way[0]])
+
 
 print(dist)

@@ -1,4 +1,4 @@
-## 02 5639 이진 검색 트리 (참조)
+## 02 5639 이진 검색 트리 (참조: 01)
 
 import sys
 sys.setrecursionlimit(100000)
