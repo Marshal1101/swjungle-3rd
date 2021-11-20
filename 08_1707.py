@@ -1,4 +1,6 @@
-## 08 1707 이분 그래프 (틀림)
+## 08 1707 이분 그래프 (실패)
+# DFS 사용
+
 # 그래프 이론
 # 그래프 탐색
 # 너비 우선 탐색
@@ -28,6 +30,8 @@ def dfs(start):
     stack = []
     visited[start] = True
     stack.append(start)
+    root[start][0] = start
+    root[start][1] = 1
     while stack:
         node = stack.pop()
         for ajac in edge[node]:
@@ -35,13 +39,16 @@ def dfs(start):
                 stack.append(ajac)
                 visited[ajac] = True
                 parent[ajac] = node
-                # level[ajac] = level[node] + 1
-                # if level[ajac] >= 3:
-                #     return 'NO'
+                root[ajac][0] = root[node][0]
+                root[ajac][1] = root[node][1] + 1
             else:
                 if parent[ajac] == parent[node]:
-                    return 'NO'
-    return 'FINE'
+                    return False
+                if ajac != parent[node]:
+                    if root[ajac][0] == root[node][0]:
+                        gab = root[node][1] - root[ajac][1]
+                        if gab % 2 != 0:
+                            return False 
 
 K = int(input())
 for _ in range(K):
@@ -53,11 +60,11 @@ for _ in range(K):
         edge[v].append(u)
 
     visited = [False] * (V+1)
-    parent = [0] * (V+1)
-    level = [0] * (V+1)
+    parent = [k for k in range(V+1)]
+    root = [[0, 0] for _ in range(V+1)]
     for j in range(1, V+1):
         if visited[j] == False:
-            if dfs(j) == 'NO':
+            if dfs(j) == False:
                 print('NO')
                 break
     else:
