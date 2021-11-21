@@ -26,11 +26,11 @@ input = sys.stdin.readline
 n = int(input())
 m = int(input())
 
-ajacent = [[] for _ in range(n+1)]
+adjacent = [[] for _ in range(n+1)]
 for i in range(m):
     v1, v2 = map(int,input().split())
-    ajacent[v1].append(v2)
-    ajacent[v2].append(v1)
+    adjacent[v1].append(v2)
+    adjacent[v2].append(v1)
 
 visited = [False] * (n+1)
 
@@ -40,7 +40,7 @@ def dfs(ajacent, start, visited):
         if not visited[v]:
             dfs(ajacent, v, visited)
 
-dfs(ajacent, 1, visited)
+dfs(adjacent, 1, visited)
 
 count = 0
 for i in visited:

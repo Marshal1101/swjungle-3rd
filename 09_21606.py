@@ -27,13 +27,13 @@ def dfs(start):
     stack.append(start)
     while stack:
         node = stack.pop()
-        for ajac in edge[node]:
-            if visited[ajac] == False:
-                if inside[ajac] == 1:
+        for adj in edge[node]:
+            if visited[adj] == False:
+                if inside[adj] == 1:
                     count += 1
                 else:
-                    visited[ajac] = True
-                    stack.append(ajac)
+                    visited[adj] = True
+                    stack.append(adj)
                 
     return count
 
