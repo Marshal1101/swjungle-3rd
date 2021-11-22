@@ -1,8 +1,9 @@
 ## 15 1916 최소비용 구하기 (구현: 01)
+# 우선순위 큐(최소 힙)
 
 # 그래프 이론
 # 다익스트라
-# 우선순위 큐(최소 힙)
+
 
 import sys, heapq
 input = sys.stdin.readline

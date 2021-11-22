@@ -5,6 +5,8 @@
 
 import sys
 input = sys.stdin.readline
+
+
 def dfs(cnt, result, p, m, mul, div):
     global max_result
     global min_result
@@ -20,6 +22,8 @@ def dfs(cnt, result, p, m, mul, div):
         dfs(cnt + 1, result * s[cnt], p, m, mul - 1, div)
     if div:
         dfs(cnt + 1, -(-result // s[cnt]) if result < 0 else result // s[cnt], p, m, mul, div - 1)
+
+
 n = int(input())
 s = list(map(int, input().split()))
 op = list(map(int, input().split()))

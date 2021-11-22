@@ -15,9 +15,7 @@ input = sys.stdin.readline
 
 n = int(input())
 
-inside = []
-inside.append('실내1, 아외0')
-inside += list(map(int,input().strip()))
+inside = ['실내1 야외0'] + list(map(int,input().strip()))
 
 edge = [[] for _ in range(n+1)]
 for _ in range(n-1):
@@ -25,15 +23,15 @@ for _ in range(n-1):
     edge[u].append(v)
     edge[v].append(u)
 
-def dfs(start):
+def DFS(start):
+    total = 0
     if inside[start] == 0:
         return 0
-    visited = [False] * (n+1) 
-    stack = []
-    count = 0
+    visited = [False] * (n+1)
+    stack = [start]
     visited[start] = True
-    stack.append(start)
     while stack:
+        count = 0
         node = stack.pop()
         for adj in edge[node]:
             if visited[adj] == False:
@@ -43,10 +41,10 @@ def dfs(start):
                     visited[adj] = True
                     stack.append(adj)
                 
-    return count
-
+        total += count
+    return total
 
 total = 0
 for i in range(1, n+1):
-    total = total + dfs(i)
+    total = total + DFS(i)
 print(total)
