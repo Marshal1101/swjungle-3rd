@@ -1,4 +1,4 @@
-## 19 2294 동전2 (참조)
+## 19 2294 동전2 (참조, https://always-be-wise.tistory.com/50)
 # BFS
 
 
