@@ -22,7 +22,8 @@ for _ in range(m):
     big, small = map(int,input().split())
     ascending[small].append(big)
     descending[big].append(small)
-
+# print(ascending)
+# print(descending)
 
 def DFS(start, graph):
     visited = [False] * (n+1)

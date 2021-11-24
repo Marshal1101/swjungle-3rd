@@ -1,13 +1,9 @@
-i = 5
-i = {}
+a = [1, 2, 3]
 
-i[2] = 3
+b = []
 
-node = 6
-node = {}
+b = a[:]
 
+a.pop()
 
-print(i)
-
-# node += i
-print(i)
+print(b)
