@@ -1,4 +1,13 @@
-list1 = [1, 0, 1, 0]
-list2 = [0, 1, 0, 1]
+i = 5
+i = {}
 
-print(list2 + list1)
+i[2] = 3
+
+node = 6
+node = {}
+
+
+print(i)
+
+# node += i
+print(i)

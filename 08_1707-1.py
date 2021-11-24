@@ -11,12 +11,15 @@ def dfs(start):
     stack.append(start)
     while stack:
         node = stack.pop()
-        for ajac in edge[node]:
-            if visited[ajac] == -1: # 아직 안 가본 곳이면 방문
-                visited[ajac] = 1 - visited[node]
-                stack.append(ajac)
-            elif visited[ajac] == visited[node]: # 방문한 곳인데, 그룹이 동일하면 False
+        for adj in edge[node]:
+            # 아직 안 가본 곳이면 방문
+            if visited[adj] == -1: 
+                # 현재와 다른 그룹번호 0 또는 1 번갈아 준다.
+                visited[adj] = 1 - visited[node] 
+                stack.append(adj)
+            elif visited[adj] == visited[node]: # 방문한 곳인데, 그룹이 동일하면 False
                 return False
+    # 스택을 다 비우고 while문 나오면 팀 배정 가능했다는 것
     return True
 
 K = int(input())

@@ -49,6 +49,7 @@ def union(v1, v2):
     if v1 == v2:
         return
 
+    # 더 작은 수를 부모로 하기로 했을 때
     if v2 < v1:
         parent[v1] = v2
     else:
@@ -56,8 +57,10 @@ def union(v1, v2):
 
 # 부모 찾아가기, 본인이거나 조부모 이상일수도
 def find(a):
+    # 자기 부모가 자기 자신이면 리턴
     if a == parent[a]:
         return a
+    # 자기 부모의 부모를 리턴, 자기 자신을 부모로 갖는 조상까지 재귀
     parent[a] = find(parent[a])  # 경로 압축
     return parent[a]
 
@@ -66,6 +69,7 @@ def find(a):
 # 사이클 안 생김
 weight = 0
 for w, s, e in edge:
+    # 만약 부모가 같으면 이미 어딘가 연결되어있다. 또 이어지면 사이클 생김
     if find(s) != find(e):
         union(s, e)
         weight += w

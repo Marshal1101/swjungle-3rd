@@ -19,48 +19,41 @@ for _ in range(n):
     world.append(list(map(int,input().split())))
 
 check = [[False for _ in range(m)] for _ in range(n)]
-def DFS(x, y):
-    if check[x][y] == True:
+def DFS(y, x):
+    if check[y][x] == True:
         return 0
-    stack = [(x, y)]
-    check[x][y] = True
+    stack = [(y, x)]
+    check[y][x] = True
     while stack:
-        x, y = stack.pop()
-        if x - 1 >= 0:
-            if world[x-1][y] == 0: 
-                if not check[x-1][y]:
-                    world[x][y] -= 1
+        y, x = stack.pop()
+        if x - 1 >= 0 and not check[y][x-1]:
+            if world[y][x-1] == 0: 
+                world[y][x] -= 1
             else:
-                if not check[x-1][y]:
-                    check[x-1][y] = True
-                    stack.append((x-1, y))
-        if x + 1 < n:
-            if world[x+1][y] == 0:
-                if not check[x+1][y]:
-                    world[x][y] -= 1
+                check[y][x-1] = True
+                stack.append((y, x-1))
+        if x + 1 < m and not check[y][x+1]:
+            if world[y][x+1] == 0:
+                world[y][x] -= 1
             else:
-                if not check[x+1][y]:
-                    check[x+1][y] = True
-                    stack.append((x+1, y))
-        if y - 1 >= 0:
-            if world[x][y-1] == 0:
-                if not check[x][y-1]:
-                    world[x][y] -= 1
+                check[y][x+1] = True
+                stack.append((y, x+1))
+        if y - 1 >= 0 and not check[y-1][x]:
+            if world[y-1][x] == 0:
+                world[y][x] -= 1
             else:
-                if not check[x][y-1]:
-                    check[x][y-1] = True
-                    stack.append((x, y-1))
-        if y + 1 < m:
-            if world[x][y+1] == 0:
-                if not check[x][y+1]:
-                    world[x][y] -= 1
+                check[y-1][x] = True
+                stack.append((y-1, x))
+        if y + 1 < n and not check[y+1][x]:
+            if world[y+1][x] == 0:
+                world[y][x] -= 1
             else:
-                if not check[x][y+1]:
-                    check[x][y+1] = True
-                    stack.append((x, y+1))
-        if world[x][y] > 0:
-            new_world.append((x, y))
-            world[x][y] = 0
+                check[y+1][x] = True
+                stack.append((y+1, x))
+        if world[y][x] > 0:
+            new_world.append((y, x))
+        else:
+            world[y][x] = 0
     return 1
 
 end = False

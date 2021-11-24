@@ -2,7 +2,8 @@
 # BFS 사용
 
 # 문제
-# 방향 없는 그래프가 주어졌을 때, 연결 요소 (Connected Component)의 개수를 구하는 프로그램을 작성하시오.
+# 방향 없는 그래프가 주어졌을 때,
+# 연결 요소 (Connected Component)의 개수를 구하는 프로그램을 작성하시오.
 
 # 입력
 # 첫째 줄에 정점의 개수 N과 간선의 개수 M이 주어진다.
@@ -19,7 +20,7 @@ input = sys.stdin.readline
 
 N, M = map(int,input().split())
 edge = [[] for _ in range(N+1)]
-temp = []
+
 for i in range(M):
     u, v = map(int,input().split())
     edge[u].append(v)

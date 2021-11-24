@@ -23,25 +23,30 @@ for _ in range(n-1):
     edge[u].append(v)
     edge[v].append(u)
 
+
 def DFS(start):
-    total = 0
-    if inside[start] == 0:
-        return 0
     visited = [False] * (n+1)
+    is_inside = False
+    if inside[start] == 0:
+        is_inside = True
     stack = [start]
     visited[start] = True
+    total = 0
     while stack:
-        count = 0
+        count_in = 0
+        count_out = 0
         node = stack.pop()
         for adj in edge[node]:
             if visited[adj] == False:
                 if inside[adj] == 1:
-                    count += 1
+                    if is_inside:
+                        count_in += 1
+                    else:
+                        count_out += 1
                 else:
                     visited[adj] = True
-                    stack.append(adj)
-                
-        total += count
+                    stack.append(adj)            
+        total += count_in + count_out * (count_out-1)
     return total
 
 total = 0

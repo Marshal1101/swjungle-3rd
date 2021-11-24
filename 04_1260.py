@@ -20,28 +20,28 @@ input = sys.stdin.readline
 
 # 자료구조 - 인접리스트
 N, M, V = map(int,input().split())
-adjacent = [[] for _ in range(N+1)]
+graph = [[] for _ in range(N+1)]
 
 for _ in range(M):
     v1, v2 = map(int,input().split())
-    adjacent[v1].append(v2)
-    adjacent[v2].append(v1)
+    graph[v1].append(v2)
+    graph[v2].append(v1)
 
 # 방문 시 작은 수 먼저 방문하므로, 인접정점 오름차순 정렬
 for i in range(N+1):
-    adjacent[i].sort()
+    graph[i].sort()
 
 
 # 자료구조 - 방문리스트
 visited = [False] * (N+1)
 
 # DFS
-def dfs(ajacent, v, visited):
+def dfs(adjacent, v, visited):
     visited[v] = True
     print(v, end=' ')
-    for i in ajacent[v]:
+    for i in adjacent[v]:
         if visited[i] != True:
-            dfs(ajacent, i, visited)
+            dfs(adjacent, i, visited)
 
 # BFS
 def bfs(ajacent, v, visited):
@@ -55,7 +55,7 @@ def bfs(ajacent, v, visited):
                 queue.append(i)
                 visited[i] = True
 
-dfs(adjacent, V, visited)
+dfs(graph, V, visited)
 print()
 visited = [False] * (N+1)
-bfs(adjacent, V, visited)
+bfs(graph, V, visited)

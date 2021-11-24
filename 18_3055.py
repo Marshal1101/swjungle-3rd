@@ -1,4 +1,4 @@
-## 18 3055 탈출 (런타임 에러 (NameError))
+## 18 3055 탈출 (메모리 초과)
 # BFS
 
 import sys
@@ -21,8 +21,8 @@ for i in range(r):
         elif graph[i][j] == 'X':
             graph[i][j] = '*'
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+di = [-1, 1, 0, 0]
+dj = [0, 0, -1, 1]
 
 def BFS():
     time = 0
@@ -30,35 +30,33 @@ def BFS():
     wq = [water]
     sq = [start]
     while sq:
-        time += 1
         nwq = []
-        for x, y in wq:
+        for i, j in wq:
             for k in range(4):
-                nx = x + dx[k]
-                ny = y + dy[k]
-                if 0<= nx < r and 0 <= ny < c and graph[nx][ny] == '.':
+                ny = i + di[k]
+                nx = j + dj[k]
+                if 0<= ny < r and 0 <= nx < c and graph[ny][nx] == '.':
                     nwq.append((nx, ny))
                     graph[nx][ny] = '*'
         wq = nwq
-
         nsq = []
         check = False
-        for x, y in sq:
+        for i, j in sq:
             for k in range(4):
-                nx = x + dx[k]
-                ny = y + dy[k]
-                if (nx, ny) == end:
+                ny = i + di[k]
+                nx = j + dj[k]
+                if (ny, nx) == end:
                     check = True
                     break
-                if 0<= nx < r and 0 <= ny < c and (graph[nx][ny] == '.' or graph[nx][ny] == 'D'):
-                    nsq.append((nx, ny))
-                    graph[nx][ny] = '*'
+                if 0 <= ny < r and 0 <= nx < c and (graph[ny][nx] == '.' or graph[ny][nx] == 'D'):
+                    nsq.append((ny, nx))
+                    graph[ny][nx] = '*'
 
         if check:
             find = True
             break
         sq = nsq
-    
+        time += 1    
     return time if find else 'KAKTUS'
 
 print(BFS())
