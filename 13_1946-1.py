@@ -1,4 +1,5 @@
-## 13 1946 신입사원 (참조, https://uneducatedjungler.tistory.com/109?category=970202)
+## 13 1946 신입사원
+# (참조, https://uneducatedjungler.tistory.com/109?category=970202)
 
 
 import sys

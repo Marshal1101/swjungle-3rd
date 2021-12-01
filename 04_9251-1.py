@@ -1,4 +1,5 @@
-## 04 9251 LCS(Longest Common Subsequence) (참조, https://pacific-ocean.tistory.com/160)
+## 04 9251 LCS(Longest Common Subsequence)
+# (참조, https://pacific-ocean.tistory.com/160)
 
 
 import sys
@@ -6,9 +7,10 @@ import sys
 
 input = sys.stdin.readline
 
+# .strip() 안 쓰면 m 뒤에 /n 개행 있어서 백준 틀림
+m = list(input().strip()) 
+n = list(input().strip())
 
-m = list(input())
-n = list(input())
 m_len = len(m)
 n_len = len(n)
 dp = [[0] * (n_len + 1) for i in range(m_len + 1)]
