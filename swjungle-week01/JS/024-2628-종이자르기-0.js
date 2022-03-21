@@ -1,5 +1,3 @@
-// 9% 에서 오류 발생, 왜 안 되지
-
 const fs = require('fs');
 const input = fs.readFileSync('/home/chilling4u/Marshal1101/swjungle-3rd-s1-algorithm/swjungle-week01/JS/test.txt').toString().trim().split('\n');
 const [paperSize, cutCount, ...arr] = input;
@@ -22,6 +20,7 @@ function cutPaper(paperSize, cutCount, whereCutList) {
             }
         }
     }
+    // 9% 에서 오류 발생, 왜 안 되지? sort() 가 익스플로러에서 완전 호환 안 되는 것으로 보임
     listColumn.sort().push(parseInt(width));
     listRow.sort().push(parseInt(height));
 
