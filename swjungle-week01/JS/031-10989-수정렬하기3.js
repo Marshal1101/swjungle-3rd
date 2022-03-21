@@ -1,3 +1,5 @@
+// js 해당 안 되는 듯
+
 const checkList = new Array(1000001).fill(0);
 let N;
 const fs = require('fs');
