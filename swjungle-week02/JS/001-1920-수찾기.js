@@ -34,7 +34,7 @@ function binarySearch(target, M, ref, N) {
 binarySearch(list, M, ref, N);
 console.log(result.join('\n'));
 
-// 1. 위와 같이 join 아닌 for 출력하면 시간이 매우 많이 걸린다.
+// 1. 결과를 join 아닌 for 출력하면 시간이 매우 많이 걸린다.
 // result.forEach((value) => {
 //     console.log(value);
 // });
