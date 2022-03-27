@@ -6,7 +6,7 @@ const [M, N, L] = input[0].split(' ').map(Number);
 const hunters = input[1].split(' ').map(Number).sort((a, b) => a - b);
 const animals = input.splice(2).map(value => value.split(' ').map(Number)).sort((a, b) => a[0] - b[0]);
 
-console.log(M, N, L, hunters, animals);
+// console.log(M, N, L, hunters, animals);
 // 동물 x좌표와 가장 가까운 사냥꾼이 동물을 사냥한다.
 // 그 사냥꾼이 사냥이 불가하면 다른 사냥꾼도 불가하다.
 
