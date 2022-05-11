@@ -1,3 +1,5 @@
+// 233	41508700	1	marshal1101	15168	220	node.js 	410
+
 const input = require('fs').readFileSync(
 	'./test.txt'
 ).toString().trim().split('\n');
