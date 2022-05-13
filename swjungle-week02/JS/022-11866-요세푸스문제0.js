@@ -1,4 +1,4 @@
-// 89	43222548	1	marshal1101	21116	204	node.js 	667
+// 86	43222887	1	marshal1101	21112	200	node.js 	649	
 
 const [N, K] = require('fs').readFileSync(
     'test.txt'
@@ -12,19 +12,17 @@ function solution(N, K) {
     let data = new Array(+N).fill(1).map((value, index) => value + index);
     while (len > 1) {
         ptr += K;
-        for (let i = exPtr; i < ptr; i++) {
+        for (let i = ptr-(K-1); i < ptr; i++) {
             data.push(data[i]);
         }
         result += `${data[ptr]}, `;
-        exPtr = ptr + 1;
         len--;
     }
     ptr += K;
-    for (let i = exPtr; i < ptr; i++) {
+    for (let i = ptr-(K-1); i < ptr; i++) {
         data.push(data[i]);
     }
     result = '<' + result + `${data[ptr]}>`
-    data.splice()
     return result;
 }
 
