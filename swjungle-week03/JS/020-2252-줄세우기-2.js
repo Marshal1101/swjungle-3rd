@@ -1,14 +1,12 @@
-let [nm, ...arr] = require('fs').readFileSync(
+let [[N, M], ...arr] = require('fs').readFileSync(
     'test.txt'
-).toString().trim().split('\n');
+).toString().trim().split('\n').map(el => el.split(' ').map(el2 => +el2));
 
-const [N, M] = nm.split(' ').map(Number);
 const indegree= Array(N+1).fill(0);
 const graph = Array(N+1).fill(null).map(ele => []);
 arr.forEach((ele) => {
-    const [v1, v2] = ele.split(' ').map(Number);
-    graph[v1].push(v2);
-    indegree[v2] += 1;
+    graph[ele[0]].push(ele[1]);
+    indegree[ele[1]] += 1;
 })
 
 function topologySort() {
