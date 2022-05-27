@@ -46,12 +46,11 @@ def bfs(end) :
     load = 0
     q = deque()
     q.append(end)
-    visited[end] = True
     while q :
         city = q.popleft()
-        for adj, next_hour in re_graph[city] :
-            if visited != True :
-                visited[adj] = True
+        if visited[city] != True :
+            visited[city] = True
+            for adj, next_hour in re_graph[city] :
                 if time[city] - time[adj] == next_hour :
                     load += 1 
                     q.append(adj)
